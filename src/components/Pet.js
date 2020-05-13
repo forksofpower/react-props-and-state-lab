@@ -2,7 +2,7 @@ import React from 'react'
 
 class Pet extends React.Component {
   render() {
-    let pet = this.props.pet;
+    let pet = this.props.pet; // use a variable to increase readability
     return (
       <div className="card">
         <div className="content">
@@ -21,9 +21,13 @@ class Pet extends React.Component {
           </div>
         </div>
         <div className="extra content">
-          {pet.isAdopted
+          {// - Use a ternary expression to decide which version of the button to display.
+           // - You could build this in a variety of ways, however this was the prettiest.
+           // - `onAdoptPet` is wrapped in an anonymous function in order to pass the 
+           //    variable pet.id to the callback
+           pet.isAdopted
             ? <button className="ui disabled button">Already adopted</button>
-            : <button className="ui primary button" onClick={() => this.props.onAdoptPet(pet.id)}>Adopt pet</button>
+            : <button className="ui primary button" onClick={this.props.onAdoptPet(pet.id)}>Adopt pet</button>
           }
         </div>
       </div>

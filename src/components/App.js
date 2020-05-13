@@ -38,17 +38,9 @@ class App extends React.Component {
     })
   }
 
-  handleFindPetsClick = (e) => {
-    this.fetchPets();
-  }
-
   handleChangeType = (e) => {
-    this.setState({ filters: { type: e.target.value} }, this.fetchPets);
+    this.setState({ filters: { type: e.target.value} });
   }
-
-  // componentDidMount() {
-  //   this.fetchPets()
-  // }
  
   render() {
     return (
@@ -61,7 +53,7 @@ class App extends React.Component {
             <div className="four wide column">
               <Filters
                 onChangeType={this.handleChangeType}
-                onFindPetsClick={this.handleFindPetsClick}  
+                onFindPetsClick={this.fetchPets} // just call fetch pets directly, no handler function needed  
               />
             </div>
             <div className="twelve wide column">
